@@ -39,7 +39,7 @@ jobs:
           merge-multiple: true
       - name: ZIP Repo
         run: |
-          for f in ../ndlls_tmp/*.zip; do
+          for f in ../ndlls_tmp/; do
             echo "$f"
             ls ../ndlls_tmp/
             mv "$f" ./ndlls/

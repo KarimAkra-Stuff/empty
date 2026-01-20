@@ -14,15 +14,16 @@ jobs:
       - name: Build Libraries
         shell: bash
         run: |
-          mkdir ../output
-          touch ../output/${{ matrix.os }}_ndll
-          zip -rv ${{ matrix.os }}_ndll.zip ../output/
+          mkdir output
+          touch output/${{ matrix.os }}_ndll
+          touch output/${{ matrix.os }}_hash
+          # zip -rv ${{ matrix.os }}_ndll.zip ../output/
           
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.os }}-ndlls
-          path: .${{ matrix.os }}_ndll.zip
+          path: output
   release:
     needs: build
     permissions: write-all
@@ -37,7 +38,7 @@ jobs:
           merge-multiple: true
       - name: ZIP Repo
         run: |
-          for f in ../tmp_artifacts/*.zip; do
+          for f in ../ndlls_tmp/*.zip; do
             unzip -o "$f" -d ./ndlls/
             rm "$f"
           done

@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@main
       - name: ZIP Repo
         run: |
-          zip -r ../release.zip . -x "*./.git/*"
+          zip -rv ../release.zip . -x "./.git/"
       - name: Release
         uses: softprops/action-gh-release@v2
         with:

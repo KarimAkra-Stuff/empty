@@ -39,7 +39,9 @@ jobs:
       - name: ZIP Repo
         run: |
           for f in ../ndlls_tmp/*.zip; do
-            unzip -o "$f" -d ./ndlls/
+            echo "$f"
+            ls ../ndlls_tmp/
+            mv "$f" ./ndlls/
             rm "$f"
           done
           zip -rv ../release.zip . -x ".git/*" ".git/**"

@@ -9,6 +9,7 @@ jobs:
         uses: actions/checkout@main
       - name: Tar Repo
         run: |
+            pwd
             tar -czf release.tgz --exclude="./git" .
       - name: Release
         uses: softprops/action-gh-release@v2

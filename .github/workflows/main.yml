@@ -10,6 +10,7 @@ jobs:
       - name: Tar Repo
         run: |
             pwd
+            ls
             tar -czf release.tgz --exclude="./git" .
       - name: Release
         uses: softprops/action-gh-release@v2

@@ -1,5 +1,5 @@
 name: Main
-on: workflow_dispatch
+on: push
 
 jobs:
   build:
@@ -16,5 +16,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: github.ref_type == 'tag'
         with:
-          files: release.tgz
+          files: ../release.tgz
         

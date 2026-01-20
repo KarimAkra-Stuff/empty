@@ -15,8 +15,9 @@ jobs:
         shell: bash
         run: |
           mkdir output
-          touch output/${{ matrix.os }}_ndll
-          touch output/${{ matrix.os }}_hash
+          mkdir output/${{ matrix.os }}
+          touch output/${{ matrix.os }}/${{ matrix.os }}_ndll
+          touch output/${{ matrix.os }}/${{ matrix.os }}_hash
           # zip -rv ${{ matrix.os }}_ndll.zip ../output/
           
       - name: Upload Artifacts

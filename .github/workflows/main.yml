@@ -39,11 +39,12 @@ jobs:
           merge-multiple: true
       - name: ZIP Repo
         run: |
+          echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
           zip -rv ../release.zip . -x ".git/*" ".git/**"
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          name: "release_3"
-          tag_name: "test_release_3"
+          name: "${{ github.ref_name }}/${{ env.SHORT_SHA }}"
+          tag_name: "${{ github.ref_name }}"
           files: ../release.zip
         

@@ -8,15 +8,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
-      - name: Tar Repo
+      - name: ZIP Repo
         run: |
-            pwd
-            ls
-            tar -czf ../release.tgz --exclude="./git" .
+          zip -r ../release.zip . -x "*.git*"
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          name: "release"
-          tag_name: "test_release"
-          files: ../release.tgz
+          name: "release_2"
+          tag_name: "test_release_2"
+          files: ../release.zip
         

@@ -35,16 +35,10 @@ jobs:
       - name: Download All Artifacts
         uses: actions/download-artifact@v4
         with:
-          path: ../ndlls_tmp
+          path: ./ndlls
           merge-multiple: true
       - name: ZIP Repo
         run: |
-          for f in ../ndlls_tmp/; do
-            echo "$f"
-            ls ../ndlls_tmp/
-            mv "$f" ./ndlls/
-            rm "$f"
-          done
           zip -rv ../release.zip . -x ".git/*" ".git/**"
       - name: Release
         uses: softprops/action-gh-release@v2
